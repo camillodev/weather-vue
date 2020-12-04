@@ -12,8 +12,9 @@
 <style lang="scss" scoped>
   .search-location {
     margin: 0 auto;
-    align-self: center;
-    width: 70%;
+    width: 100%;
+    margin-top: 10%;
+    max-width: 600px;
 
     input {
       border-radius: 10px 0 0 10px;
@@ -25,6 +26,9 @@
 </style>
 
 <script>
+import Weather from "@/services/Weather.js";
+
+
 export default {
   name: "SearchLocation",
   components: { },
@@ -32,17 +36,24 @@ export default {
     return {
       form: { 
         search: ""
-      }
+      },
+      temperature: null
     };
   },
   props: {},
-  computed: {}, 
+  computed: {
+    fahrenheitToCelsius() {
+      return this.temperature ? `${parseInt(this.temperature)}ºC` : 'carregando';
+    }
+  }, 
   methods: {
       searchLocation(evt) {
-          evt.preventDefault()
-          alert(this.form.search)
+          evt.preventDefault();
+          const cityName = this.form.search;
+          Weather.getWeather(cityName).then(resp => {
+            this.temperature = resp.data.main.temp;
+          });          
       }
-
   }
 
 };
