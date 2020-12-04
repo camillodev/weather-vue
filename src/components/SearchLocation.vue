@@ -27,7 +27,7 @@
 
 <script>
 import Weather from "@/services/Weather.js";
-
+import { mapActions } from 'vuex'
 
 export default {
   name: "SearchLocation",
@@ -42,16 +42,14 @@ export default {
   },
   props: {},
   computed: {
-    fahrenheitToCelsius() {
-      return this.temperature ? `${parseInt(this.temperature)}ºC` : 'carregando';
-    }
   }, 
   methods: {
+      ...mapActions([ 'updateTemperature' ]),
       searchLocation(evt) {
           evt.preventDefault();
           const cityName = this.form.search;
           Weather.getWeather(cityName).then(resp => {
-            this.temperature = resp.data.main.temp;
+            this.updateTemperature(resp.data.main.temp);
           });          
       }
   }
