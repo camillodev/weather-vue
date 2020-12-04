@@ -4,7 +4,7 @@
       <SearchLocation />
       <div class="weather__result">
         <span class="weather__result__temperature">{{temperature}}</span>
-        <img class="weather__result__icons" src="../assets/icons/animated/cloudy.svg" alt="cloudy day">
+        <img class="weather__result__icons" :src="iconUrl" alt="cloudy day">
       </div>
     </div>
   </div>
@@ -45,8 +45,7 @@ export default {
   },
   props: {},
   computed: {
-     ...mapGetters(['temperature']),
-   
+     ...mapGetters(['temperature', 'iconUrl']),
   }, 
   methods: {
      

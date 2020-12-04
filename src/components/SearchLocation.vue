@@ -36,20 +36,21 @@ export default {
     return {
       form: { 
         search: ""
-      },
-      temperature: null
+      }
     };
   },
   props: {},
   computed: {
   }, 
   methods: {
-      ...mapActions([ 'updateTemperature' ]),
+      ...mapActions([ 'updateTemperature', 'updateIcon' ]),
       searchLocation(evt) {
           evt.preventDefault();
           const cityName = this.form.search;
           Weather.getWeather(cityName).then(resp => {
             this.updateTemperature(resp.data.main.temp);
+            this.updateIcon(resp.data.weather[0].main);
+            console.log(resp.data.weather[0].main)
           });          
       }
   }
