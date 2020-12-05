@@ -1,5 +1,5 @@
 <template>
-  <div class="weather">
+  <div class="weather" :style="getBackground">
     <div class="container">
       <SearchLocation />
       <img v-if="!weather" class="weather__icon" src="../assets/icons/animated/weather.svg" alt="general icon weather">
@@ -13,13 +13,11 @@
               low: {{weather.temperature.low}} - high: {{weather.temperature.high}}
             </div>
             <div class="weather__temperature--current">{{currentTemperature}}</div>
-            <div class="weather__temperature--sensation">
-              Feels like: {{ feelsLike }}
-            </div>
+            <div class="weather__description"> {{ weather.description  }}</div>
+
           </div>
           <div class="weather__visualization">
-            <img class="weather__icon" :src="iconUrl" alt="weather.icon">
-            <div class="weather__description"> {{ weather.description  }}</div>
+            <img class="weather__icon" :src="weather.iconUrl" alt="weather.icon">
           </div>
         </div>
       </div>
@@ -28,8 +26,9 @@
 </template>
 
 <style scoped lang="scss">
-  .home {
+  .weather {
     height: 100vh;
+    background-size: cover;
   }
 
   .weather {
@@ -37,26 +36,42 @@
     &__result {
       align-items: center;
       margin-top: 50px;
+      padding: 20px;
+      padding-right: 0px ;
+      background-color: #FFF;
+      border-radius: 40px;
+      box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+      border: 1px solid lightgrey;
+      min-height: 200px;
     }
 
     &__main {
     display: flex;
     }
 
+    &__title h2{
+      font-size: 22px;
+    }
+
     &__temperature { 
-      font-size: 20px;
-      width: 60%;
-      line-height: 1;
+      font-size: 16px;
+      width: 50%;
+      line-height: 1.2;
       align-self: center;
       
       &--current {
-        font-size: 60px;
+        font-size: 50px;
         margin-top: 0;
       }
     }
+    
+    &__visualization {
+      width: 50%;
+    }
+
     &__icon {
-      height: 200px;
-      width: auto;
+      height: auto;
+      width: 100%;
     }
 
   }
@@ -80,10 +95,16 @@ export default {
   computed: {
      ...mapGetters([
        'currentTemperature',
-       'iconUrl',
        'weather',
        'feelsLike'
       ]),
+     
+      getBackground() {
+        return this.weather 
+          ? { 'background-image': 'url(' + this.weather.backgroundUrl + ')'}
+          : { 'background-color': '#b8daff'};
+      },
+
   }, 
   methods: {
      
