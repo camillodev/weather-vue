@@ -1,9 +1,7 @@
 
-const temperature = null;
-const icon = 'thunder';
+const weather = null;
 
 
 export default {
-    temperature,
-    icon,
+    weather,
 }

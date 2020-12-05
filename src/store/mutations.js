@@ -1,15 +1,10 @@
 
 
-const updateTemperature = (state, newTemperature) => {
-    state.temperature = newTemperature;
-}
-
-const updateIcon = (state, newIcon) => {
-    state.icon = newIcon;
+const updateWeather = (state, newWeather) => {
+    state.weather = newWeather;
 }
 
 
 export default {
-    updateTemperature,
-    updateIcon
+    updateWeather,
 }

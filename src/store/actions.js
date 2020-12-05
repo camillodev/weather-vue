@@ -1,13 +1,8 @@
-const updateTemperature = (context, newTemperature) => {
-    context.commit('updateTemperature', newTemperature);
-}
-
-const updateIcon = (context, newIcon) => {
-    context.commit('updateIcon', newIcon.toLowerCase());
+const updateWeather = (context, newWeather) => {
+    context.commit('updateWeather', newWeather);
 }
 
 
 export default {
-    updateTemperature,
-    updateIcon,
+    updateWeather,
 }

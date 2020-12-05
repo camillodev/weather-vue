@@ -43,14 +43,35 @@ export default {
   computed: {
   }, 
   methods: {
-      ...mapActions([ 'updateTemperature', 'updateIcon' ]),
+      ...mapActions([ 'updateWeather' ]),
       searchLocation(evt) {
           evt.preventDefault();
           const cityName = this.form.search;
-          Weather.getWeather(cityName).then(resp => {
-            this.updateTemperature(resp.data.main.temp);
-            this.updateIcon(resp.data.weather[0].main);
-            console.log(resp.data.weather[0].main)
+          Weather.getWeather(cityName).then(({ data }) => {
+            const weather = {
+              id: data.id,
+              location: `${data.name}, ${data.sys.country}`,
+              temperature: {
+                current: data.main.temp,
+                low: data.main.temp_min,
+                high: data.main.temp_max,
+                feelsLike: data.main.feels_like
+              }, 
+              description: data.weather[0].description,
+              icon: data.weather[0].main.toLowerCase()
+            };
+            console.log(weather)
+
+            this.updateWeather(weather);
+
+            //location
+            //weather description
+            //temperature
+            //high
+            //low
+            //feels_like 
+
+
           });          
       }
   }
