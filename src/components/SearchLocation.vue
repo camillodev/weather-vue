@@ -30,6 +30,7 @@
 
 <script>
 import Weather from "@/services/Weather.js";
+import moment from "moment";
 import { mapActions } from 'vuex'
 
 export default {
@@ -47,6 +48,9 @@ export default {
   }, 
   methods: {
       ...mapActions([ 'updateWeather' ]),
+      moment() {
+        return moment();
+      },
       searchLocation(evt) {
           evt.preventDefault();
           const cityName = this.form.search;
@@ -61,14 +65,27 @@ export default {
                 high: data.main.temp_max,
                 feelsLike: data.main.feels_like
               }, 
+              details: {
+                pressure: data.main.pressure,
+                humidity: data.main.humidity,
+                windSpeed: data.wind.speed,
+                sunrise: this.formartUnixUTC(data.sys.sunrise, data.timezone),
+                sunset: this.formartUnixUTC(data.sys.sunset, data.timezone),
+                timezone: data.timezone
+              },
               description: data.weather[0].description,
               iconUrl: require(`../assets/icons/animated/${this.getWeatherType(weatherType)}.svg`),
               backgroundUrl: require(`../assets/images/${this.getWeatherType(weatherType)}.jpg`)
             };
-            console.log(weather)
+            console.log(weather.details.timezone)
 
             this.updateWeather(weather);
           });
+     },
+
+     formartUnixUTC(seconds, timezone) {
+
+       return moment.unix(seconds).utc().add(timezone, 's').format('HH:mm');
      },
 
      getWeatherType(weather) {

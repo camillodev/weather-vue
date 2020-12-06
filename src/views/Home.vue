@@ -20,6 +20,19 @@
             <img class="weather__icon" :src="weather.iconUrl" alt="weather.icon">
           </div>
         </div>
+        <b-button @click="showDetails=!showDetails">teste</b-button>
+        <div class="weather__details" v-if="showDetails">
+          <div class="weather__details--left">
+            <div>Wind Speed: {{ weather.details.windSpeed }}</div>
+            <div>Humidity: {{ weather.details.humidity }}</div>
+            <div>Pressure: {{ weather.details.pressure }}</div>
+          </div>
+          <div class="weather__details--right">
+            <div>Sunrise: {{ weather.details.sunrise }}</div>
+            <div>Sunset: {{ weather.details.sunset }}</div>
+          </div>
+          
+        </div>
       </div>
     </div>
   </div>
@@ -46,13 +59,20 @@
     }
 
     &__main {
-    display: flex;
+      display: flex;
     }
 
     &__title h2{
-      font-size: 22px;
+      font-size: 25px;
     }
-
+    &__details {
+      justify-content: space-between;
+      display: flex;
+      text-align: left;
+      &--right, &--left {
+        width: 50%;
+      }
+    }
     &__temperature { 
       font-size: 16px;
       width: 50%;
@@ -74,6 +94,7 @@
       width: 100%;
     }
 
+
   }
 
 </style>
@@ -89,7 +110,10 @@ export default {
     SearchLocation
   },
   data() { 
-    return { };
+    return {
+      location: null, 
+      showDetails: false
+     };
   },
   props: {},
   computed: {
@@ -107,7 +131,20 @@ export default {
 
   }, 
   methods: {
-     
+  },
+  created() {
+    if(!("geolocation" in navigator)) {
+      alert('Geolocation is not available.')
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(response => {
+      const { latitude, longitude } = response.coords;
+      this.location = { latitude: latitude, longitude: longitude };
+    }, err => {
+      console.log(err)
+    })
+  
   }
 
 };
