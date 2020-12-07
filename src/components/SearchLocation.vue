@@ -1,100 +1,121 @@
 <template>
- <div class="teste">
+  <div class="teste">
     <div class="search-location">
-    
-    <b-form @submit="searchLocation">    
-      <b-input-group size="lg">
-        <b-form-input id="search" v-model="form.search" type="search" placeholder="Bruxellas"></b-form-input>
-        <b-button variant="light" size="lg" @click="searchLocation"> <b-icon icon="search" aria-hidden="true"></b-icon></b-button>
-      </b-input-group>
-    </b-form>
+      <b-form @submit="searchLocation">
+        <b-input-group size="lg">
+          <b-form-input
+            id="search"
+            v-model="form.search"
+            type="search"
+            placeholder="Bruxellas"
+          ></b-form-input>
+          <b-button variant="light" size="lg" @click="searchLocation">
+            <b-icon icon="search" aria-hidden="true"></b-icon
+          ></b-button>
+        </b-input-group>
+      </b-form>
+    </div>
   </div>
- </div>
 </template>
 
 <style lang="scss" scoped>
-  .search-location {
-    margin: 0 auto;
-    width: 100%;
-    padding-top: 10%;
-    max-width: 600px;
+.search-location {
+  margin: 0 auto;
+  width: 100%;
+  padding-top: 10%;
+  max-width: 600px;
 
-    input {
-      border-radius: 10px 0 0 10px;
-    }
-    button {
-      border-radius: 0 10px 10px 0;
-    }
+  input {
+    border-radius: 10px 0 0 10px;
   }
+  button {
+    border-radius: 0 10px 10px 0;
+  }
+}
 </style>
 
 <script>
-import Weather from "@/services/Weather.js";
 import moment from "moment";
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 
 export default {
   name: "SearchLocation",
-  components: { },
-  data() { 
+  components: {},
+  data() {
     return {
-      form: { 
-        search: ""
-      }
+      form: {
+        search: "",
+      },
     };
   },
   props: {},
-  computed: {
-  }, 
+  computed: {},
   methods: {
-      ...mapActions([ 'updateWeather' ]),
-      moment() {
-        return moment();
-      },
-      searchLocation(evt) {
-          evt.preventDefault();
-          const cityName = this.form.search;
-          Weather.getWeather(cityName).then(({ data }) => {
-            const weatherType = data.weather[0].main;
-            const weather = {
-              id: data.id,
-              location: `${data.name}, ${data.sys.country}`,
-              temperature: {
-                current: data.main.temp,
-                low: data.main.temp_min,
-                high: data.main.temp_max,
-                feelsLike: data.main.feels_like
-              }, 
-              details: {
-                pressure: data.main.pressure,
-                humidity: data.main.humidity,
-                windSpeed: data.wind.speed,
-                sunrise: this.formartUnixUTC(data.sys.sunrise, data.timezone),
-                sunset: this.formartUnixUTC(data.sys.sunset, data.timezone),
-                timezone: data.timezone
-              },
-              description: data.weather[0].description,
-              iconUrl: require(`../assets/icons/animated/${this.getWeatherType(weatherType)}.svg`),
-              backgroundUrl: require(`../assets/images/${this.getWeatherType(weatherType)}.jpg`)
-            };
-            console.log(weather.details.timezone)
+    ...mapActions([
+      'getWeatherByLocation',
+      'getWeatherByCoordinates'
+    ]),
+    moment() {
+      return moment();
+    },
+  
+    searchLocation(evt) {
+      evt.preventDefault();
+      const location = this.form.search;
+      this.getWeatherByLocation(location);
+    },
 
-            this.updateWeather(weather);
-          });
-     },
+    // getWeatherType(weather) {
+    //   const weatherValues = [
+    //     "thunderstorm",
+    //     "drizzle",
+    //     "rain",
+    //     "snow",
+    //     "clear",
+    //     "clouds",
+    //   ];
+    //   const weatherFiltered = weatherValues.find(
+    //     (weathers) => weathers === weather.toLowerCase()
+    //   );
 
-     formartUnixUTC(seconds, timezone) {
+    //   return weatherFiltered ? weatherFiltered : "thunderstorm";
+    // },
 
-       return moment.unix(seconds).utc().add(timezone, 's').format('HH:mm');
-     },
+    // treatWeatherData(data) {
+    //   const weatherType = data.weather[0].main;
+    //   const weather = {
+    //     id: data.id,
+    //     location: `${data.name}, ${data.sys.country}`,
+    //     temperature: {
+    //       current: data.main.temp,
+    //       low: data.main.temp_min,
+    //       high: data.main.temp_max,
+    //       feelsLike: data.main.feels_like,
+    //     },
+    //     details: {
+    //       pressure: data.main.pressure,
+    //       humidity: data.main.humidity,
+    //       windSpeed: data.wind.speed,
+    //       sunrise: this.formartUnixUTC(data.sys.sunrise, data.timezone),
+    //       sunset: this.formartUnixUTC(data.sys.sunset, data.timezone),
+    //       timezone: data.timezone,
+    //     },
+    //     description: data.weather[0].description,
+    //     iconUrl: require(`../assets/icons/animated/${this.getWeatherType(
+    //       weatherType
+    //     )}.svg`),
+    //     backgroundUrl: require(`../assets/images/${this.getWeatherType(
+    //       weatherType
+    //     )}.jpg`),
+    //   };
+    //   console.log(weather.details.timezone);
 
-     getWeatherType(weather) {
-       const weatherValues = ['thunderstorm', 'drizzle', 'rain', 'snow', 'clear', 'clouds'];
-       const weatherFiltered = weatherValues.find(weathers => weathers === weather.toLowerCase());
-       
-       return weatherFiltered ? weatherFiltered : 'thunderstorm';
-     }
-  }
+    //   this.updateWeather(weather);
+    // },
 
+    // formartUnixUTC(seconds, timezone) {
+    //   return moment.unix(seconds).utc().add(timezone, "s").format("HH:mm");
+    // },
+  },
 };
 </script>

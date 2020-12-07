@@ -166,7 +166,7 @@ export default {
   },
   props: {},
   computed: {
-    ...mapGetters(["currentTemperature", "weather", "feelsLike"]),
+    ...mapGetters(["currentTemperature", "weather"]),
 
     getBackground() {
       return this.weather

@@ -20,7 +20,18 @@ const get = (url) => {
     })
 }
 
+const getAll = ([requests]) => {
+    requests.map(url => {
+       return `${url}&appid=${appId}&units=metric`;
+    })
+
+    return client.all([requests]).catch((error) => {
+        handleRequestError(error)
+    })
+}
+
 export default {
-    get
+    get, 
+    getAll
 }
 

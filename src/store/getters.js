@@ -2,9 +2,6 @@ const currentTemperature = (state) => {
   return state.weather ? `${parseInt(state.weather.temperature.current)}ºC` : null;
 };
 
-const feelsLike = (state) => {
-  return state.weather ? `${parseInt(state.weather.temperature.feelsLike)}ºC` : null;
-};
 
 
 const weather = (state) => {
@@ -14,5 +11,4 @@ const weather = (state) => {
 export default {
     currentTemperature,
     weather,
-    feelsLike,
 };
