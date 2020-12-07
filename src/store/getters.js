@@ -5,7 +5,12 @@ const currentWeather = (state) => {
   return state.currentWeather;
 };
 
+const userLocation = (state) => {
+  return state.userLocation;
+};
+
 export default {
     currentTemperature,
     currentWeather,
+    userLocation,
 };

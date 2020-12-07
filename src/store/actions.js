@@ -6,7 +6,6 @@ const updateUserLocation = (context, { latitude, longitude }) => {
     context.dispatch('getWeatherByCoordinates', { latitude, longitude });
 }
 
-
 const updateWeather = (context, newWeather) => {
     context.commit('updateWeather', newWeather);
 }
@@ -22,6 +21,13 @@ const getWeatherByCoordinates = (context, {latitude, longitude}) => {
         context.commit('updateCurrentWeather', response.data);
     })
 }
+
+const getNextDaysWeather = (context, {latitude, longitude}) => {
+    Weather.getNextDaysWeather(latitude, longitude).then(response => {
+        context.commit('updateNextDaysWeather', response.data);
+    })
+}
+
 
 // const getWeatherByCoordinates = (context, {lat, lon, location}) => {
 //     Promise.all([
@@ -45,15 +51,17 @@ const getWeatherByCoordinates = (context, {latitude, longitude}) => {
 //     return { currentTemp: coordinateResponse.data.current.temp, ...currentWeather };
 // }
 
-// const getNextDaysWeathers = (daily) => {
+// const getNextDaysWeather = (daily) => {
 //     const today = moment().format('DD/MM/YYYY');
 //     return daily.filter(day => moment.unix(day.dt).format('DD/MM/YYYY') != today);
 // }
+
 
 
 export default {
     updateWeather,
     getWeatherByLocation,
     getWeatherByCoordinates,
-    updateUserLocation
+    updateUserLocation,
+    getNextDaysWeather,
 }

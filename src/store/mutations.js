@@ -29,6 +29,14 @@ const updateCurrentWeather = (state, newWeather)  => {
     state.currentWeather = formatCurrentWeatherResponse(newWeather, location);
 }
 
+const updateNextDaysWeather = (state, response)  => {
+    const today = moment().format('DD/MM/YYYY');
+    const nextDays = response.daily.filter(day => moment.unix(day.dt).format('DD/MM/YYYY') != today);
+    state.nextDays = nextDays.map(day => {
+        return formatNextDaysWeatherResponse(day, location);
+    })
+}
+
 const updateUserLocation  = (state, {latitude, longitude})  => {
     state.userLocation.latitude = latitude;
     state.userLocation.latitude = longitude; 
@@ -77,6 +85,24 @@ const formatCurrentWeatherResponse = (weather, location)  => {
 
 }
 
+const formatNextDaysWeatherResponse = (weather, location)  => {
+    const weatherType = weather.weather[0].main.toLowerCase();
+    const formatedWeather = {
+        location: location,
+        date:  moment.unix(weather.dt).format('DD/MM/YYYY'),
+        temperature: {
+            low: weather.temp.min,
+            high: weather.temp.max,
+        },
+        description: weather.weather[0].description,
+        iconUrl: require(`../assets/icons/animated/${getWeatherType(weatherType)}.svg`),
+        backgroundUrl: require(`../assets/images/${getWeatherType(weatherType)}.jpg`),
+    };
+
+    return formatedWeather;
+
+}
+
 // const formatHistoricalWeatherResponse = (weather, location)  => {
 //     return {
 //         location: location,
@@ -94,7 +120,7 @@ const formatCurrentWeatherResponse = (weather, location)  => {
     
 
 export default {
-    // updateWeather,
+    updateNextDaysWeather,
     updateCurrentWeather,
-    updateUserLocation
+    updateUserLocation,
 }

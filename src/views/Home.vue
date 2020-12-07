@@ -2,6 +2,7 @@
   <div class="weather" :style="getBackground">
     <div class="container">
       <SearchLocation />
+      <b-button @click="showSevenDays()" > 7 dias </b-button>
       <img
         v-if="!currentWeather"
         class="weather__icon"
@@ -167,7 +168,7 @@ export default {
   },
   props: {},
   computed: {
-    ...mapGetters(["currentTemperature", "currentWeather"]),
+    ...mapGetters(["currentTemperature", "currentWeather", 'userLocation']),
 
     getBackground() {
       return this.currentWeather
@@ -178,7 +179,13 @@ export default {
   methods: {
     ...mapActions([
       'updateUserLocation',
+      'getNextDaysWeather'
     ]),
+
+    showSevenDays() {
+      const { latitude, longitude } = this.userLocation;
+      this.getNextDaysWeather({ latitude, longitude });
+    },
 
     getUserLocation() {
       if (!("geolocation" in navigator)) {

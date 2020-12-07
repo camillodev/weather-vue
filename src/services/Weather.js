@@ -2,11 +2,6 @@ import http from './Http';
 import moment from "moment";
 
 
-const getWeather = (cityName) => {
-  cityName = cityName ? cityName: "rio de janeiro"
-  return http.get(`/weather?q=${cityName}`);
-}
-
 const getWeatherByLocation = (location) => {
   location = location ? location: "rio de janeiro"
   return http.get(`/weather?q=${location}`);
@@ -27,14 +22,14 @@ const getWeatherByCoordinates = (lat, lon) => {
   return http.get(`/weather?lat=${lat}&lon=${lon}`);
 }
 
-// const getWeatherByCoordinates = (lat, lon) => {
-//   return http.get(`/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely`);
-// }
+const getNextDaysWeather = (lat, lon) => {
+  return http.get(`/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely`);
+}
 
 export default {
-  getWeather,
   getWeatherByLocation,
   getHistoricalWeather,
   getWeatherByCoordinates,
+  getNextDaysWeather,
 
 }
