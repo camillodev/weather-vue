@@ -65,57 +65,6 @@ export default {
       this.getWeatherByLocation(location);
     },
 
-    // getWeatherType(weather) {
-    //   const weatherValues = [
-    //     "thunderstorm",
-    //     "drizzle",
-    //     "rain",
-    //     "snow",
-    //     "clear",
-    //     "clouds",
-    //   ];
-    //   const weatherFiltered = weatherValues.find(
-    //     (weathers) => weathers === weather.toLowerCase()
-    //   );
-
-    //   return weatherFiltered ? weatherFiltered : "thunderstorm";
-    // },
-
-    // treatWeatherData(data) {
-    //   const weatherType = data.weather[0].main;
-    //   const weather = {
-    //     id: data.id,
-    //     location: `${data.name}, ${data.sys.country}`,
-    //     temperature: {
-    //       current: data.main.temp,
-    //       low: data.main.temp_min,
-    //       high: data.main.temp_max,
-    //       feelsLike: data.main.feels_like,
-    //     },
-    //     details: {
-    //       pressure: data.main.pressure,
-    //       humidity: data.main.humidity,
-    //       windSpeed: data.wind.speed,
-    //       sunrise: this.formartUnixUTC(data.sys.sunrise, data.timezone),
-    //       sunset: this.formartUnixUTC(data.sys.sunset, data.timezone),
-    //       timezone: data.timezone,
-    //     },
-    //     description: data.weather[0].description,
-    //     iconUrl: require(`../assets/icons/animated/${this.getWeatherType(
-    //       weatherType
-    //     )}.svg`),
-    //     backgroundUrl: require(`../assets/images/${this.getWeatherType(
-    //       weatherType
-    //     )}.jpg`),
-    //   };
-    //   console.log(weather.details.timezone);
-
-    //   this.updateWeather(weather);
-    // },
-
-    // formartUnixUTC(seconds, timezone) {
-    //   return moment.unix(seconds).utc().add(timezone, "s").format("HH:mm");
-    // },
   },
 };
 </script>

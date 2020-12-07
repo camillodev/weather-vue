@@ -1,7 +1,19 @@
 
-const weather = null;
+const currentWeather = null;
+const historicalWeather = null;
+const nextSevenDays = null;
+const userLocation = {
+    latitude: null,
+    longetide: null,
+    location: ""
+};
+const searchLocation = null;
 
 
 export default {
-    weather,
+    currentWeather,
+    historicalWeather,
+    nextSevenDays,
+    searchLocation,
+    userLocation,
 }

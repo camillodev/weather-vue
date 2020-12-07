@@ -1,14 +1,11 @@
 const currentTemperature = (state) => {
-  return state.weather ? `${parseInt(state.weather.temperature.current)}ºC` : null;
+  return state.currentWeather ? `${parseInt(state.currentWeather.temperature.current)}ºC` : null;
 };
-
-
-
-const weather = (state) => {
-  return state.weather;
-}
+const currentWeather = (state) => {
+  return state.currentWeather;
+};
 
 export default {
     currentTemperature,
-    weather,
+    currentWeather,
 };

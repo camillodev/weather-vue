@@ -23,10 +23,13 @@ const getHistoricalWeather = (lat, lon) => {
   }
   return Promise.all(requests);
 }
-
 const getWeatherByCoordinates = (lat, lon) => {
-  return http.get(`/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely`);
+  return http.get(`/weather?lat=${lat}&lon=${lon}`);
 }
+
+// const getWeatherByCoordinates = (lat, lon) => {
+//   return http.get(`/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely`);
+// }
 
 export default {
   getWeather,
