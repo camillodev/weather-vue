@@ -7,6 +7,7 @@ const userLocation = {
     longetide: null,
     location: ""
 };
+const tabView = 'today';
 const searchLocation = null;
 
 
@@ -16,4 +17,5 @@ export default {
     nextSevenDays,
     searchLocation,
     userLocation,
+    tabView,
 }

@@ -28,6 +28,10 @@ const getNextDaysWeather = (context, {latitude, longitude}) => {
     })
 }
 
+const updateTab = (context, view) => {
+    context.commit('updateTabView', view);
+}
+
 
 // const getWeatherByCoordinates = (context, {lat, lon, location}) => {
 //     Promise.all([
@@ -64,4 +68,5 @@ export default {
     getWeatherByCoordinates,
     updateUserLocation,
     getNextDaysWeather,
+    updateTab,
 }

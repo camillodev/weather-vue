@@ -42,6 +42,9 @@ const updateUserLocation  = (state, {latitude, longitude})  => {
     state.userLocation.latitude = longitude; 
 }
 
+const updateTabView  = (state, view)  => {
+    state.tabView = view;
+}
 
  const getWeatherType = (weather) => {
     const weatherValues = [
@@ -123,4 +126,5 @@ export default {
     updateNextDaysWeather,
     updateCurrentWeather,
     updateUserLocation,
+    updateTabView,
 }

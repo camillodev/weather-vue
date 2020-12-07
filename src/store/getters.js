@@ -9,8 +9,13 @@ const userLocation = (state) => {
   return state.userLocation;
 };
 
+const tabView = (state) => {
+  return state.tabView;
+};
+
 export default {
     currentTemperature,
     currentWeather,
     userLocation,
+    tabView,
 };
