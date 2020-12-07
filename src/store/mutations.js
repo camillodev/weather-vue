@@ -37,7 +37,6 @@ const updateNextDaysWeather = (state, response)  => {
     state.nextSevenDaysWeather = nextSevenDaysWeather.map(day => {
         return formatNextDaysWeatherResponse(day, location);
     })
-    console.log(state.nextSevenDaysWeather[0])
 }
 
 const updateUserLocation  = (state, {latitude, longitude})  => {
