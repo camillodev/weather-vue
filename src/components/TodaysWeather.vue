@@ -1,11 +1,7 @@
 <template>
   <div class="todays">
-    <img
-        v-if="!currentWeather"
-        class="todays__icon"
-        src="../assets/icons/animated/weather.svg"
-        alt="general icon weather"
-      />
+    <NoLocation  v-if="!currentWeather"/>
+    
     <div class="todays__result" v-if="currentWeather">
       <div class="todays__title">
         <h2>{{ currentWeather.location }}</h2>
@@ -147,10 +143,14 @@
 
 <script>
 import { mapGetters } from "vuex";
+import NoLocation from "@/components/NoLocation.vue";
+
 
 export default {
   name: "TodaysWeather",
-  components: {},
+  components: {
+    NoLocation
+  },
   data() {
     return {
       showDetails: false,

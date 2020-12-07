@@ -1,6 +1,6 @@
 <template>
   <div class="nextdays">
-      <h1>Passado</h1>
+      <NoLocation  v-if="!historicalWeather"/>
   </div>
 </template>
 
@@ -10,18 +10,21 @@
 </style>
 
 <script>
-// import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
+import NoLocation from "@/components/NoLocation.vue";
 
 export default {
   name: "HistoricalWeather",
-  components: {},
+  components: {
+    NoLocation
+  },
   data() {
     return {
     };
   },
   props: {},
   computed: {
-    //   ...mapGetters(['tabView']),
+    ...mapGetters(['historicalWeather']),
 
   },
   methods: {

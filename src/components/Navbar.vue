@@ -18,6 +18,16 @@
 
 <style lang="scss" scoped>
 // #b8daff
+.nav-tabs {
+    background-color: #FFF;
+    .nav-link {
+        color: #495057;
+    }
+    .nav-link.active {
+        color: #007bff;
+    }
+}
+
 </style>
 
 <script>
@@ -39,7 +49,6 @@ export default {
     ...mapActions(["updateTab"]),
 
     updateTabView(view) {
-      console.log(view);
       this.updateTab(view);
     },
   },

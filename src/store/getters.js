@@ -5,6 +5,14 @@ const currentWeather = (state) => {
   return state.currentWeather;
 };
 
+const nextSevenDaysWeather = (state) => {
+  return state.nextSevenDaysWeather;
+};
+
+const historicalWeather = (state) => {
+  return state.historicalWeather;
+};
+
 const userLocation = (state) => {
   return state.userLocation;
 };
@@ -16,6 +24,8 @@ const tabView = (state) => {
 export default {
     currentTemperature,
     currentWeather,
+    nextSevenDaysWeather,
+    historicalWeather,
     userLocation,
     tabView,
 };

@@ -1,27 +1,29 @@
 <template>
   <div class="nextdays">
-      <h1>proximos 7 dias</h1>
+      <NoLocation  v-if="!nextSevenDaysWeather"/>
   </div>
 </template>
 
 <style lang="scss" scoped>
-// #b8daff
 
 </style>
 
 <script>
-// import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
+import NoLocation from "@/components/NoLocation.vue";
 
 export default {
   name: "NextDaysWeather",
-  components: {},
+  components: {
+    NoLocation
+  },
   data() {
     return {
     };
   },
   props: {},
   computed: {
-    //   ...mapGetters(['tabView']),
+    ...mapGetters(['nextSevenDaysWeather']),
 
   },
   methods: {
