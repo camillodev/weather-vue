@@ -1,10 +1,10 @@
 <template>
   <div class="next-days">
-    <NoLocation v-if="!nextSevenDaysWeather" />
+    <NoLocation v-if="!nextDaysWeather" />
     <ul class="next-days__result">
       <li
         class="next-days__result__item"
-        v-for="weather in nextSevenDaysWeather"
+        v-for="weather in nextDaysWeather"
         :key="weather.date"
       >
         <div class="next-days__result__item--left">
@@ -44,6 +44,7 @@
   margin-top: 40px;
   padding: 0px;
   text-align: left;
+  border-radius: 20px;
 }
 .next-days__result__item {
   list-style-type: none;
@@ -54,6 +55,9 @@
   padding: 10px 15px;
   padding-left: 0px;
   font-size:15px;
+  &:last-child {
+    border: none;
+  }
 
   &--left {
     display: flex;
@@ -80,7 +84,7 @@ export default {
   },
   props: {},
   computed: {
-    ...mapGetters(["nextSevenDaysWeather", "userLocation"]),
+    ...mapGetters(["nextDaysWeather", "userLocation"]),
   },
   methods: {
     ...mapActions(["getNextDaysWeather"]),

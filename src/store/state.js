@@ -1,7 +1,7 @@
 
 const currentWeather = null;
 const historicalWeather = null;
-const nextSevenDaysWeather = null;
+const nextDaysWeather = null;
 const userLocation = {
     latitude: null,
     longetide: null,
@@ -14,7 +14,7 @@ const searchLocation = null;
 export default {
     currentWeather,
     historicalWeather,
-    nextSevenDaysWeather,
+    nextDaysWeather,
     searchLocation,
     userLocation,
     tabView,
