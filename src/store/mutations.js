@@ -20,6 +20,8 @@ const updateCurrentWeather = (state, newWeather)  => {
     const { lon, lat } = newWeather.coord;
     const location = `${newWeather.name}, ${newWeather.sys.country}`
 
+    state.tabView = 'today';
+
     state.userLocation = { 
         latitude: lat,
         longitude: lon, 
@@ -31,10 +33,11 @@ const updateCurrentWeather = (state, newWeather)  => {
 
 const updateNextDaysWeather = (state, response)  => {
     const today = moment().format('DD/MM/YYYY');
-    const nextDays = response.daily.filter(day => moment.unix(day.dt).format('DD/MM/YYYY') != today);
-    state.nextDays = nextDays.map(day => {
+    const nextSevenDaysWeather = response.daily.filter(day => moment.unix(day.dt).format('DD/MM/YYYY') != today);
+    state.nextSevenDaysWeather = nextSevenDaysWeather.map(day => {
         return formatNextDaysWeatherResponse(day, location);
     })
+    console.log(state.nextSevenDaysWeather[0])
 }
 
 const updateUserLocation  = (state, {latitude, longitude})  => {
