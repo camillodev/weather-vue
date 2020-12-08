@@ -1,6 +1,6 @@
-<h1 align="center">Weather</h1>
+<h1 align="center">Weather Vue</h1>
 
-## Has a doubt about the weather? Join us and check the weather around your place, or simply another side of the world.
+## Doubts about the weather? Join us and check the weather at your location, or simply any city in the world.
 <p align="center">
  <img src="https://img.shields.io/static/v1?label=vue&message=2.6.11&color=<red>"/>
  <img src="https://img.shields.io/static/v1?label=bootstrap&message=4.5.3&color=<red>"/>
@@ -12,19 +12,66 @@
 
 <p align="center">
  <a href="#About">About</a> •
- <a href="#Install>install guide •
- <a href="#Roadmap">Roadmap</a> • 
- <a href="#Tecnologias">Tecnology</a> • 
- <a href="#autor">Author</a>
+ <a href="#Features">Features</a> • 
+ <a href="#Install Guide">install guide </a>•
+ <a href="#Tecnology">Tecnology </a>•
 </p>
 
 ## About
 
-<p> WeatherToGo is a combination in which means just a phrase. The idea is to create a project that the user has a lot of informations about the weather local or another places. Do you want a date tonight, or make a social with his friends and do you want to know about the weather to improvise the better look, or just prevent the cold, or rain, or whatever go. tHe first idea is simple, but the future idea is expand to information.</p>
+<p> Weather Vue is a Vuejs study project. The idea is to create a project that the user can check in formations about the local weather or another place. Do you want to have a date tonight, or meet your friends, or planing the best outfit, or avoid the rain?  You can count on Weather Vue</p>
 
-## Roadmap
+## Features
 
-[x]Be responsive
-[x]Get the information using the correct API
-[x]Show the information using the icons by weather
-tttt
+ - [x] be responsive  
+ - [x] to have an input where the user can write the location (city, for example) they want to get info for  
+ - [x] Show the weather info currently for the input location:
+    - [x] Location (ie. Brussels, Belgium)
+    - [x] Current weather description (ie. raining)
+    - [x] Current temperature
+    - [x] Todays high temperature
+    - [x] Todays low temperature  
+
+- [x] Add extra info about the current conditions on a hidden component the user can toggle the visibility: 
+    - [x]  Wind Speed
+    - [x]  Humidity
+    - [x]  Pressure
+    - [x]  Sunrise/Sunset Time
+- [x] Show basic weather info for the next 7 days on that location  
+- [x] Show basic weather info for the last 30 days on that location
+- [x] If there's a need to make a big number of requests, make them concurrent
+
+## Install Guide
+### Requirements
+Before you start, you will need to have installed in your pc the following tools: 
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
+I also recomend to have a good code editing tool like [VSCode](https://code.visualstudio.com/)
+
+### 🎲 Running the application
+
+#### Clone this repository
+$ git clone <https://github.com/camillodev/weather-vue/>
+
+#### acess the project folder using your termnal
+$ cd weather-vue
+
+#### Install the project dependencies
+$ npm install
+
+#### running the application
+$ npm run serve
+
+#### the project will be ruuning at the port: 8080 - acess <http://localhost:8080> 
+
+
+### 🛠 Tecnology
+
+The following tools were used to build this project:
+
+- [Node.js](https://nodejs.org/en/)
+- [VueJs](https://vuejs.org/)
+- [Vuex](https://vuex.vuejs.org/)
+- [Bootstrap Vue](https://bootstrap-vue.org/)
+- [Axios](https://bootstrap-vue.org/)
+- [OpenWeatherMapAPI](https://openweathermap.org/)
+- [MomentJS](https://momentjs.com/)
