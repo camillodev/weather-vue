@@ -3,7 +3,7 @@
     <b-nav-item
       :active="tabView == 'historical'"
       @click="updateTabView('historical')"
-      >Historical</b-nav-item
+      >Last 30 Days</b-nav-item
     >
     <b-nav-item :active="tabView == 'today'" @click="updateTabView('today')"
       >Today</b-nav-item

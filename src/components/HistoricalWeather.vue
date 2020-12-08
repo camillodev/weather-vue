@@ -1,45 +1,63 @@
 <template>
   <div class="historical-weather">
     <NoLocation v-if="!historicalWeather" />
-    <ul class="historical-weather__result">
-      <li
-        class="historical-weather__result__item"
-        v-for="weather in historicalWeather"
-        :key="weather.dt"
-      >
-        <div class="historical-weather__result__item--left">
-          <div class="historical-weather__item__visualization">
-            <img
-              class="todays__icon"
-              :src="weather.iconUrl"
-              alt="weather icon"
-            />
-          </div>
-          <div class="historical-weather__result__item__weather">
-            <div class="historical-weather__result__item__date">
-              {{ weather.date }}
+    <div v-if="historicalWeather">
+      <b-pagination
+        class="historical-weather__pagination"
+        v-model="currentPage"
+        :total-rows="historicalWeather.length"
+        :per-page="perPage"
+        first-number
+        last-number
+        pills 
+        aria-controls="historicalWeather"
+      ></b-pagination>
+
+      <ul class="historical-weather__result" id="test">
+        <li
+          class="historical-weather__result__item"
+          v-for="weather in itemsForList"
+          :key="weather.dt"
+        >
+          <div class="historical-weather__result__item--left">
+            <div class="historical-weather__item__visualization">
+              <img
+                class="todays__icon"
+                :src="weather.iconUrl"
+                alt="weather icon"
+              />
             </div>
-            <div class="historical-weather__result__item__description">
-              {{ weather.description }}
+            <div class="historical-weather__result__item__weather">
+              <div class="historical-weather__result__item__date">
+                {{ weather.date }}
+              </div>
+              <div class="historical-weather__result__item__description">
+                {{ weather.description }}
+              </div>
             </div>
           </div>
-        </div>
 
           <div class="historical-weather__result__item__temperature">
-            <div>Temperature: </div>
+            <div>Temperature:</div>
             <div>
               {{ weather.temperature }}
             </div>
           </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+
+.historical-weather__pagination{
+  margin-top:40px;
+  justify-content: center;
+}
+
 .historical-weather__result {
   background-color: #fff;
-  margin-top: 40px;
   padding: 0px;
   text-align: left;
   border-radius: 20px;
@@ -80,11 +98,21 @@ export default {
     NoLocation,
   },
   data() {
-    return {};
+    return {
+      currentPage: 1,
+      perPage: 10,
+    };
   },
   props: {},
   computed: {
     ...mapGetters(["historicalWeather", "userLocation"]),
+
+    itemsForList() {
+      return this.historicalWeather.slice(
+        (this.currentPage - 1) * this.perPage,
+        this.currentPage * this.perPage
+      );
+    },
   },
   methods: {
     ...mapActions(["getHistoricalWeather"]),
