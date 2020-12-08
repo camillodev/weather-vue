@@ -13,8 +13,8 @@
 <p align="center">
  <a href="#About">About</a> •
  <a href="#Features">Features</a> • 
- <a href="#Installation">installation </a>•
- <a href="#Tecnology">Tecnology </a>•
+ <a href="#Installation">Installation </a>•
+ <a href="#Tecnology">Tecnology </a>
 </p>
 
 ## About
