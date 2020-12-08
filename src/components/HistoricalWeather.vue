@@ -5,7 +5,7 @@
       <li
         class="historical-weather__result__item"
         v-for="weather in historicalWeather"
-        :key="weather.date"
+        :key="weather.dt"
       >
         <div class="historical-weather__result__item--left">
           <div class="historical-weather__item__visualization">

@@ -34,12 +34,10 @@ const updateTabView  = (state, view)  => {
 
 
 const updateHistoricalWeather = (state, response)  => {
-    const newHistoricalWeather = response;
-    state.historicalWeather = newHistoricalWeather.map(day => {
+    const newHistoricalWeather = response.map(day => {
         return formatHistoricalWeatherResponse(day);
     })
-
-    console.log(state.historicalWeather)
+    state.historicalWeather = multiplyHistoricalData(newHistoricalWeather);
 }
 
  const getWeatherType = (weather) => {
@@ -104,6 +102,7 @@ const formatHistoricalWeatherResponse = (weather)  => {
     const weatherType = weather.current.weather[0].main.toLowerCase();
 
     return {
+        id: weather.current.dt,
         temperature: `${parseInt(weather.current.temp)}ºC`,
         description: weather.current.weather[0].description,
         date:  moment.unix(weather.current.dt).format('DD/MM/YYYY'),
@@ -111,9 +110,18 @@ const formatHistoricalWeatherResponse = (weather)  => {
     };
 }
 
-// const multiplyHistoricalData = (data) => {
-//     return [...data, ...data, ...data, ...data, ...data, ...data];
-// }
+const multiplyHistoricalData = (data) => {
+     data.forEach(d => {
+        let i = 0;
+        while(i <= 4) {
+            i++;
+            d.id += i;
+            data.push(d);
+        }
+    })
+
+    return data;
+}
 
 
     

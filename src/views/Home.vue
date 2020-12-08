@@ -3,17 +3,21 @@
     <Navbar />
     <div class="container">
       <SearchLocation />
-      <HistoricalWeather v-if="tabView === 'historical'"/>
-      <TodaysWeather v-if="tabView === 'today'"/>
-      <NextDaysWeather v-if="tabView === 'nextDays'"/>
+      <HistoricalWeather v-if="tabView === 'historical'" />
+      <TodaysWeather v-if="tabView === 'today'" />
+      <NextDaysWeather v-if="tabView === 'nextDays'" />
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .weather {
-  height: 100vh;
+  min-height: 100vh;
   background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding-bottom: 20px;
 }
 </style>
 
