@@ -1,14 +1,15 @@
 <h1 align="center">Weather</h1>
 
 ## Has a doubt about the weather? Join us and check the weather around your place, or simply another side of the world.
+<p align="center">
+ <img src="https://img.shields.io/static/v1?label=vue&message=2.6.11&color=<red>"/>
+ <img src="https://img.shields.io/static/v1?label=bootstrap&message=4.5.3&color=<red>"/>
+ <img src="https://img.shields.io/static/v1?label=axios&message=0.21.0&color=<red>"/>
+ <img src="https://img.shields.io/static/v1?label=npm&message=4.12.0&color=<red>"/>
+</p>
 
-<img src="https://img.shields.io/static/v1?label=vue&message=2.6.11&color=<red>"/>
-<img src="https://img.shields.io/static/v1?label=bootstrap&message=4.5.3&color=<red>"/>
-<img src="https://img.shields.io/static/v1?label=axios&message=0.21.0&color=<red>"/>
-<img src="https://img.shields.io/static/v1?label=npm&message=4.12.0&color=<red>"/>
+# Contents
 
-Contents
-=================
 <p align="center">
  <a href="#About">About</a> •
  <a href="#Install>install guide •
