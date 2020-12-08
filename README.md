@@ -13,7 +13,7 @@
 <p align="center">
  <a href="#About">About</a> •
  <a href="#Features">Features</a> • 
- <a href="#Install Guide">install guide </a>•
+ <a href="#Install">install guide </a>•
  <a href="#Tecnology">Tecnology </a>•
 </p>
 
@@ -64,7 +64,7 @@ $ npm run serve
 #### the project will be ruuning at the port: 8080 - acess <http://localhost:8080> 
 
 
-### 🛠 Tecnology
+# 🛠 Tecnology
 
 The following tools were used to build this project:
 
