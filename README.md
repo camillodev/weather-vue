@@ -3,9 +3,10 @@
 ## Doubts about the weather? Join us and check the weather at your location, or simply any city in the world.
 <p align="center">
  <img src="https://img.shields.io/static/v1?label=vue&message=2.6.11&color=<red>"/>
+ <img src="https://img.shields.io/static/v1?label=vuex&message=3.4.0&color=<red>"/>
  <img src="https://img.shields.io/static/v1?label=bootstrap&message=4.5.3&color=<red>"/>
- <img src="https://img.shields.io/static/v1?label=axios&message=0.21.0&color=<red>"/>
- <img src="https://img.shields.io/static/v1?label=npm&message=4.12.0&color=<red>"/>
+ <img src="https://img.shields.io/static/v1?label=bootstrap-vue&message=2.20.1&color=<red>"/>
+ <img src="https://img.shields.io/static/v1?label=momentjs&message=2.29.1&color=<red>"/>
 </p>
 
 # Contents
