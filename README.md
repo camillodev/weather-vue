@@ -13,7 +13,7 @@
 <p align="center">
  <a href="#About">About</a> •
  <a href="#Features">Features</a> • 
- <a href="#Install">install guide </a>•
+ <a href="#Installation">install guide </a>•
  <a href="#Tecnology">Tecnology </a>•
 </p>
 
@@ -41,7 +41,8 @@
 - [x] Show basic weather info for the last 30 days on that location
 - [x] If there's a need to make a big number of requests, make them concurrent
 
-## Install Guide
+## Installation
+
 ### Requirements
 Before you start, you will need to have installed in your pc the following tools: 
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
@@ -64,7 +65,7 @@ $ npm run serve
 #### the project will be ruuning at the port: 8080 - acess <http://localhost:8080> 
 
 
-# 🛠 Tecnology
+## Tecnology 🛠
 
 The following tools were used to build this project:
 
