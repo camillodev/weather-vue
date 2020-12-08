@@ -56,6 +56,9 @@
   font-size:15px;
   background-color: #fff;
   margin-bottom: 10px;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
 
   &:last-child {
     border: none;
