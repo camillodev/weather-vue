@@ -40,7 +40,6 @@
 
 <style lang="scss" scoped>
 .next-days__result {
-  background-color: #fff;
   margin-top: 40px;
   padding: 0px;
   text-align: left;
@@ -55,6 +54,9 @@
   padding: 10px 15px;
   padding-left: 0px;
   font-size:15px;
+  background-color: #fff;
+  margin-bottom: 10px;
+
   &:last-child {
     border: none;
   }

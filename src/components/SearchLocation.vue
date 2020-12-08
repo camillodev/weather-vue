@@ -1,5 +1,4 @@
 <template>
-  <div class="teste">
     <div class="search-location">
       <b-form @submit="searchLocation">
         <b-input-group size="lg">
@@ -15,7 +14,6 @@
         </b-input-group>
       </b-form>
     </div>
-  </div>
 </template>
 
 <style lang="scss" scoped>

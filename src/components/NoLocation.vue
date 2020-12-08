@@ -14,6 +14,7 @@
 .no-location__icon {
   height: auto;
   width: 100%;
+  max-width: 400px;
 }
 </style>
 

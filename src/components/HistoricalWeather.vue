@@ -57,10 +57,14 @@
 }
 
 .historical-weather__result {
-  background-color: #fff;
   padding: 0px;
   text-align: left;
   border-radius: 20px;
+
+  @media(min-width: 768px) {
+    columns: 2;
+    -webkit-columns: 2;
+  }
 }
 .historical-weather__result__item {
   list-style-type: none;
@@ -71,6 +75,8 @@
   padding: 10px 15px;
   padding-left: 0px;
   font-size: 15px;
+  margin-bottom: 10px;
+  background-color: #FFF;
 
   &:last-child {
     border: none;
