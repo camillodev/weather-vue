@@ -1,5 +1,6 @@
 <template>
   <div class="weather" :style="getBackground">
+  <h1>New feature test</h1>
     <Navbar />
     <div class="container">
       <SearchLocation />
