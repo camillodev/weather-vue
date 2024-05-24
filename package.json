@@ -70,5 +70,10 @@
   ],
   "jest": {
     "preset": "@vue/cli-plugin-unit-jest"
+  },
+  "engines": {
+    "node": ">=20",
+    "npm": ">=6",
+    "python": "3.x"
   }
 }
